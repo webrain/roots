@@ -157,6 +157,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Register tasks
+  grunt.registerTask('weroots-setup', [
+    'copy',
+    'clean',
+    'sass',
+    'uglify',
+    'version'
+  ]);
   grunt.registerTask('default', [
     'clean',
     'sass',
