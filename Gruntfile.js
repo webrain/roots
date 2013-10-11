@@ -2,6 +2,47 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['assets/components/sass-bootstrap/lib/*'],
+            dest: 'assets/css/sass/bootstrap',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['assets/components/sass-bootstrap/js/*'],
+            dest: 'assets/js/vendor/bootstrap',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['assets/components/jquery/jquery.js'],
+            dest: 'assets/js/vendor/jquery',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['assets/components/modernizr/modernizr.js'],
+            dest: 'assets/js/vendor/modernizr',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['assets/components/sass-bootstrap/fonts/*'],
+            dest: 'assets/fonts',
+            filter: 'isFile'
+          }
+        ]
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -9,8 +50,10 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'assets/js/*.js',
-        'assets/js/plugins/*.js',
-        '!assets/js/scripts.min.js'
+        '!assets/js/scripts.min.js',
+        '!assets/js/jquery.min.js',
+        '!assets/js/modernizr.min.js',
+        '!assets/js/bootstrap.min.js'
       ]
     },
     sass: {
@@ -19,31 +62,43 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {
-          'assets/css/main.min.css': [
-            'assets/sass/app.scss'
-          ]
+          'assets/css/main.min.css': 'assets/css/sass/app.scss'
         }
       }
     },
     uglify: {
+      jquery: {
+        files: {
+          'assets/js/jquery.min.js': ['assets/js/vendor/jquery/jquery.js']
+        }
+      },
+      modernizr: {
+        files: {
+          'assets/js/modernizr.min.js': ['assets/js/vendor/modernizr/modernizr.js']
+        }
+      },
+      bootstrap: {
+        files: {
+          'assets/js/bootstrap.min.js': [
+            'assets/js/vendor/bootstrap/transition.js',
+            'assets/js/vendor/bootstrap/alert.js',
+            'assets/js/vendor/bootstrap/button.js',
+            'assets/js/vendor/bootstrap/carousel.js',
+            'assets/js/vendor/bootstrap/collapse.js',
+            'assets/js/vendor/bootstrap/dropdown.js',
+            'assets/js/vendor/bootstrap/modal.js',
+            'assets/js/vendor/bootstrap/tooltip.js',
+            'assets/js/vendor/bootstrap/popover.js',
+            'assets/js/vendor/bootstrap/scrollspy.js',
+            'assets/js/vendor/bootstrap/tab.js',
+            'assets/js/vendor/bootstrap/affix.js',
+            'assets/js/vendor/bootstrap/*.js'
+          ]
+        }
+      },
       dist: {
         files: {
-          'assets/js/scripts.min.js': [
-            'assets/components/sass-bootstrap/js/transition.js',
-            'assets/components/sass-bootstrap/js/alert.js',
-            'assets/components/sass-bootstrap/js/button.js',
-            'assets/components/sass-bootstrap/js/carousel.js',
-            'assets/components/sass-bootstrap/js/collapse.js',
-            'assets/components/sass-bootstrap/js/dropdown.js',
-            'assets/components/sass-bootstrap/js/modal.js',
-            'assets/components/sass-bootstrap/js/tooltip.js',
-            'assets/components/sass-bootstrap/js/popover.js',
-            'assets/components/sass-bootstrap/js/scrollspy.js',
-            'assets/components/sass-bootstrap/js/tab.js',
-            'assets/components/sass-bootstrap/js/affix.js',
-            'assets/components/sass-bootstrap/*.js',
-            'assets/components/_*.js'
-          ]
+          'assets/js/scripts.min.js': ['assets/js/scripts.js']
         }
       }
     },
@@ -59,8 +114,8 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: [
-          'assets/sass/*.sass',
-          'assets/sass/*.scss'
+          'assets/css/sass/*.sass',
+          'assets/css/sass/*.scss'
         ],
         tasks: ['sass', 'version']
       },
@@ -99,6 +154,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-wp-version');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Register tasks
   grunt.registerTask('default', [
@@ -110,5 +166,4 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'watch'
   ]);
-
 };
