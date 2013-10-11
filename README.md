@@ -2,34 +2,41 @@
 
 weroots is a Wordpress starter theme based on [Roots Theme](http://roots.io/).
 
-The current documentation and README file are the same as the Roots Theme, at least until we make significant changes.
-
-The theme is now based on SASS so it requires the sass ruby gem.
+The theme is based on SASS, so it requires the sass ruby gem, it uses [Bower](http://bower.io) to manage frontend dependencies and [Grunt](http://gruntjs.com/) to execute tasks.
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Roots contained in `package.json` by running the following from the Roots theme directory:
+Clone the git repo - `git clone git://github.com/webrain/weroots.git` - and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for weroots contained in `package.json` by running the following from the theme directory:
 
 ```
 npm install
 ```
 
-If you're using Nginx you'll need to add the Roots rewrites to your server config before the PHP block (`location ~ \.php$`) to use the clean URLs feature:
+Then [install Bower](http://bower.io) and install the frontend dependencies contained in `bower.json` by running the following from the root theme directory:
 
-```nginx
-location ~ ^/assets/(img|js|css|fonts)/(.*)$ {
-  try_files $uri $uri/ /wp-content/themes/roots/assets/$1/$2;
-}
-location ~ ^/plugins/(.*)$ {
-  try_files $uri $uri/ /wp-content/plugins/$1;
-}
+```
+bower install
 ```
 
-Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Roots.
+Then to finalize the setup just run the following command:
+
+```
+grunt weroots-setup
+```
+
+The ruby `sass` gem is required to compile the scss files. To install that just execute:
+
+```
+gem install sass
+```
+
+This will move assets files in meaningful directories, compiles and minify javascript and css for the first time.
+Now you can enable the theme from the Wordpress appearance panel.
 
 ## Theme Development
 
-After you've installed Grunt and ran `npm install` from the theme root, use `grunt watch` to watch for updates to your LESS and JS files and Grunt will automatically re-build as you write your code.
+After you've installed Grunt and ran `npm install` from the theme root, use `grunt watch` to watch for updates to your Sass and JS files and Grunt will automatically re-build as you write your code.
+You can also use a [Livereload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) for your browser to get live page reloading.
 
 ## Configuration
 
@@ -39,12 +46,7 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
 ## Documentation
 
-### [Roots Docs](http://roots.io/docs/)
-
-* [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files and theme organization
-* [Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/) — Learn all about the theme wrapper
-* [Build Script](http://roots.io/using-grunt-for-wordpress-theme-development/) — A look into the Roots build script powered by Grunt
-* [Roots Sidebar](http://roots.io/the-roots-sidebar/) — Understand how to display or hide the sidebar in Roots
+The theme documentation is a work in progress. You can refer to the [Roots theme documentation](http://roots.io/docs) for now, this theme shares a lot with Roots.
 
 ## Features
 
@@ -69,12 +71,12 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
 Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this project. There are several ways you can contribute:
 
-* Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
+* Reporting issues
 * Suggesting new features
 * Writing or refactoring code
-* Fixing [issues](https://github.com/roots/roots/issues)
-* Replying to questions on the [forum](http://discourse.roots.io/)
+* Fixing [issues](https://github.com/webrain/weroots/issues)
 
 ## Support
 
-Use the [Roots Discourse](http://discourse.roots.io/) to ask questions and get support.
+We are available for support through Github issues, you can also usually [tweet us](http://twitter.com/webrain_it).
+For customization requests or urgent support we are available for hire. Contact us through [our website](http://webrain.it).
