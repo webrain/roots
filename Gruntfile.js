@@ -36,6 +36,20 @@ module.exports = function(grunt) {
           {
             expand: true,
             flatten: true,
+            src: ['assets/components/html5shiv/src/html5shiv.js'],
+            dest: 'assets/js/vendor/html5shiv',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['assets/components/respond/respond.min.js'],
+            dest: 'assets/js/vendor/respond',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
             src: ['assets/components/sass-bootstrap/fonts/*'],
             dest: 'assets/fonts',
             filter: 'isFile'
