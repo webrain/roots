@@ -36,6 +36,15 @@ function roots_scripts() {
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
+// Add IE<9 only scripts
+function roots_add_old_ie_scripts () {
+  echo '<!--[if lt IE 9]>' . "\r\n";
+  echo '<script src="' . get_template_directory_uri() . '/assets/js/vendor/html5shiv/html5shiv.js"><script/>' . "\r\n";
+  echo '<script src="' . get_template_directory_uri() . '/assets/js/vendor/respond/respond.min.js"><script/>' . "\r\n";
+  echo '<![endif]-->' . "\r\n";
+}
+add_action('wp_head', 'roots_add_old_ie_scripts');
+
 // http://wordpress.stackexchange.com/a/12450
 function roots_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
