@@ -1,12 +1,12 @@
-# [weroots Theme](https://github.com/webrain/weroots)
+# [YellowTree Theme](https://github.com/webrain/yellowtree)
 
-weroots is a Wordpress starter theme based on [Roots Theme](http://roots.io/).
+YellowTree is a Wordpress starter theme, originally based on [Roots Theme](http://roots.io/).
 
 The theme is based on SASS, so it requires the sass ruby gem, it uses [Bower](http://bower.io) to manage frontend dependencies and [Grunt](http://gruntjs.com/) to execute tasks.
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/webrain/weroots.git` - and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for weroots contained in `package.json` by running the following from the theme directory:
+Clone the git repo - `git clone git://github.com/webrain/yellowtree.git` - and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for YellowTree contained in `package.json` by running the following from the theme directory:
 
 ```
 npm install
@@ -21,7 +21,7 @@ bower install
 Then to finalize the setup just run the following command:
 
 ```
-grunt weroots-setup
+grunt yellowtree-setup
 ```
 
 The ruby `sass` gem is required to compile the scss files. To install that just execute:
@@ -74,7 +74,7 @@ Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this proje
 * Reporting issues
 * Suggesting new features
 * Writing or refactoring code
-* Fixing [issues](https://github.com/webrain/weroots/issues)
+* Fixing [issues](https://github.com/webrain/yellowtree/issues)
 
 ## Support
 
