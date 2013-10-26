@@ -8,7 +8,13 @@ This theme is in loving memory of the small yellow tree we had outside our offic
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/webrain/yellowtree.git` - and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for YellowTree contained in `package.json` by running the following command from the theme directory:
+Clone the git repository.
+
+```
+git clone git://github.com/webrain/yellowtree.git`
+```
+
+[Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for YellowTree contained in `package.json` by running the following command from the theme directory:
 
 ```
 npm install
@@ -26,13 +32,14 @@ Then to finalize the setup just run the following command:
 grunt yellowtree-setup
 ```
 
+This will move assets files in meaningful directories, compiles and minify javascript and css for the first time.
+
 The ruby `sass` gem is required to compile the scss files. To install that just execute:
 
 ```
 gem install sass
 ```
 
-This will move assets files in meaningful directories, compiles and minify javascript and css for the first time.
 Now you can enable the theme from the Wordpress appearance panel.
 
 ## Theme Development
