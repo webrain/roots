@@ -1,6 +1,6 @@
 {
-  "name": "weroots",
-  "version": "0.0.1",
+  "name": "yellowtree",
+  "version": "0.0.2",
   "dependencies": {
     "jquery" : "1.10.2",
     "sass-bootstrap" : "3.0.0",

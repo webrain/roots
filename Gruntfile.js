@@ -157,7 +157,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Register tasks
-  grunt.registerTask('weroots-setup', [
+  grunt.registerTask('yellowtree-setup', [
     'copy',
     'clean',
     'sass',
